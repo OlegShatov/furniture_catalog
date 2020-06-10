@@ -1,0 +1,12 @@
+﻿<div class="card mt-4">
+  <h4 class="card-header">
+    Furniture Catalog
+  </h4>
+  <div class="card-body">
+    <h6>List items</h6>
+    <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+    <ul *ngIf="items">
+      <li *ngFor="let item of items">{{ item.id }} {{ item.name }}</li>
+    </ul>
+  </div>
+</div>
