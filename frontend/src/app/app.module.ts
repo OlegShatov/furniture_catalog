@@ -11,7 +11,8 @@ import { AppRoutingModule } from "./app-routing.module";
 
 import { BasicAuthInterceptor, ErrorInterceptor } from "./_helpers";
 import { CatalogComponent } from "./catalog";
-import { LoginComponent } from "./login";
+import { LoginComponent } from "./login";;
+import { ItemcardComponent } from './itemcard/itemcard.component'
 
 @NgModule({
   imports: [
@@ -20,7 +21,7 @@ import { LoginComponent } from "./login";
     HttpClientModule,
     AppRoutingModule,
   ],
-  declarations: [AppComponent, CatalogComponent, LoginComponent],
+  declarations: [AppComponent, CatalogComponent, LoginComponent], ItemcardComponent,
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

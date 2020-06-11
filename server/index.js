@@ -54,6 +54,18 @@ app.get("/items", function (req, res) {
   });
 });
 
+// получение описания предмета мебели
+app.get("/items/:id", function (req, res) {
+  const id = req.params.id;
+  pool.query("SELECT description FROM items WHERE id=?", [id], function (
+    err,
+    data
+  ) {
+    if (err) return console.log(err);
+    res.send(data);
+  });
+});
+
 /*
 // получение списка пользователей
 app.get("/", function (req, res) {
@@ -71,18 +83,8 @@ app.get("/users", function (req, res) {
   });
 });
 
-// получем id редактируемого пользователя, получаем его из бд и отправлям с формой редактирования
-app.get("/edit/:id", function (req, res) {
-  const id = req.params.id;
-  pool.query("SELECT * FROM users WHERE id=?", [id], function (err, data) {
-    if (err) return console.log(err);
-    res.render("edit.hbs", {
-      user: data[0],
-    });
-  });
-});
 */
 
 app.listen(4000, function () {
-  console.log("Сервер ожидает подключения...");
+  console.log("Server listening on port 4000...");
 });
