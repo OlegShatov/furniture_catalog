@@ -10,4 +10,8 @@ export class ItemService {
   getAll() {
     return this.http.get<Item[]>(`${environment.apiUrl}/items`);
   }
+
+  getDescription(id) {
+    return this.http.get(`${environment.apiUrl}/items/desc/${id}`);
+  }
 }

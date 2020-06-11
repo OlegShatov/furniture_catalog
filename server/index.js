@@ -48,14 +48,14 @@ app.post("/users/authenticate", bodyParser.json(), function (req, res) {
 
 // получение списка предметов мебели
 app.get("/items", function (req, res) {
-  pool.query("SELECT * FROM items", function (err, data) {
+  pool.query("SELECT id, name FROM items", function (err, data) {
     if (err) return console.log(err);
     res.send(data);
   });
 });
 
 // получение описания предмета мебели
-app.get("/items/:id", function (req, res) {
+app.get("/items/desc/:id", function (req, res) {
   const id = req.params.id;
   pool.query("SELECT description FROM items WHERE id=?", [id], function (
     err,
@@ -65,25 +65,6 @@ app.get("/items/:id", function (req, res) {
     res.send(data);
   });
 });
-
-/*
-// получение списка пользователей
-app.get("/", function (req, res) {
-  pool.query("SELECT * FROM users", function (err, data) {
-    if (err) return console.log(err);
-    res.send(data);
-  });
-});
-
-// получение списка пользователей
-app.get("/users", function (req, res) {
-  pool.query("SELECT * FROM users", function (err, data) {
-    if (err) return console.log(err);
-    res.send(data);
-  });
-});
-
-*/
 
 app.listen(4000, function () {
   console.log("Server listening on port 4000...");

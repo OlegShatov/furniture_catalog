@@ -8,17 +8,23 @@ import { ItemService } from "@app/_services";
 export class CatalogComponent {
   loading = false;
   items: Item[];
+  itemDescription: string;
 
   constructor(private itemService: ItemService) {}
 
   ngOnInit() {
     this.loading = true;
-    this.itemService
-      .getAll()
-      .pipe(first())
-      .subscribe((items) => {
-        this.loading = false;
-        this.items = items;
-      });
+    this.itemService.getAll().subscribe((items) => {
+      this.loading = false;
+      this.items = items;
+      console.log(this.items);
+    });
+  }
+
+  setIdItem(id: BigInteger) {
+    this.itemService.getDescription(id).subscribe((desc: []) => {
+      this.itemDescription = JSON.stringify(desc);
+      console.log(this.itemDescription);
+    });
   }
 }
