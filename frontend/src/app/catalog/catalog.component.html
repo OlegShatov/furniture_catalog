@@ -7,7 +7,7 @@
     <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
     <ul *ngIf="items">
       <li *ngFor="let item of items">
-        <a routerLink="itemcard" (click)="setIdItem(item.id)">{{ item.name }}</a>
+        <a [routerLink]="['itemcard', item.id]">{{ item.name }}</a>
       </li>
     </ul>
   </div>
