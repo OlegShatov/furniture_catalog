@@ -1,5 +1,4 @@
 ﻿import { Component } from "@angular/core";
-import { first } from "rxjs/operators";
 
 import { Item } from "@app/_models";
 import { ItemService } from "@app/_services";
@@ -25,6 +24,8 @@ export class CatalogComponent {
     this.itemService.getDescription(id).subscribe((desc: []) => {
       this.itemDescription = JSON.stringify(desc);
       console.log(this.itemDescription);
+
+      this.itemService.setDescription(this.itemDescription);
     });
   }
 }
