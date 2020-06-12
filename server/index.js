@@ -62,7 +62,7 @@ app.get("/items/desc/:id", function (req, res) {
     data
   ) {
     if (err) return console.log(err);
-    res.send(data);
+    res.json(data[0].description);
   });
 });
 
