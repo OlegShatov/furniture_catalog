@@ -66,6 +66,20 @@ app.get("/items/desc/:id", function (req, res) {
   });
 });
 
+// получение списка изображений предмета мебели
+app.get("/items/images/:id", function (req, res) {
+  const id = req.params.id;
+  pool.query("SELECT items.name, slider.itemsId, photos.name FROM slider " +
+   "INNER JOIN photos ON slider.photosId = photos.id " +
+   "INNER JOIN items ON slider.itemsId = items.id WHERE items.id = ?", [id], function (
+    err,
+    data
+  ) {
+    if (err) return console.log(err);
+    res.json(data);
+  });
+});
+
 app.listen(4000, function () {
   console.log("Server listening on port 4000...");
 });
