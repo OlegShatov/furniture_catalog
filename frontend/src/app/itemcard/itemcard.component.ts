@@ -14,10 +14,15 @@ export class ItemcardComponent implements OnInit {
 
   itemDescription: any;
   id: number;
+  images: any;
 
   ngOnInit() {
     this.itemService.getDescription(this.id).subscribe((desc: any) => {
       this.itemDescription = desc;
+    });
+    this.itemService.getImages(this.id).subscribe((res: any) => {
+      this.images = res;
+      console.log("Images: ", this.images);
     });
   }
 }

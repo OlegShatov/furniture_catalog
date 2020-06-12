@@ -15,4 +15,8 @@ export class ItemService {
     return this.http.get(`${environment.apiUrl}/items/desc/${id}`);
   }
 
+  getImages(id) {
+    return this.http.get(`${environment.apiUrl}/items/images/${id}`);
+  }
+
 }
