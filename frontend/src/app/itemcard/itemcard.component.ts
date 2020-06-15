@@ -1,6 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from "@angular/core";
 import { ItemService } from "@app/_services";
+import { environment } from '@environments/environment';
 
 @Component({
   selector: "app-itemcard",
@@ -22,7 +23,10 @@ export class ItemcardComponent implements OnInit {
     });
     this.itemService.getImages(this.id).subscribe((res: any) => {
       this.images = res;
-      console.log("Images: ", this.images);
+      for (let i = 0; i < this.images.length; i++) {
+        this.images[i] = `${environment.apiUrl}/images/download/${this.images[i].name}`;
+      }
     });
+    
   }
 }

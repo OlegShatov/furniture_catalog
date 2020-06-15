@@ -80,6 +80,12 @@ app.get("/items/images/:id", function (req, res) {
   });
 });
 
+// загрузка изображения предмета мебели
+app.get("/images/download/:fileName", function (req, res) {
+  const file = __dirname + '/images/' + req.params.fileName;
+  res.sendFile(file);
+  });
+
 app.listen(4000, function () {
   console.log("Server listening on port 4000...");
 });

@@ -11,8 +11,10 @@ import { AppRoutingModule } from "./app-routing.module";
 
 import { BasicAuthInterceptor, ErrorInterceptor } from "./_helpers";
 import { CatalogComponent } from "./catalog";
-import { LoginComponent } from "./login";;
+import { LoginComponent } from "./login";
 import { ItemcardComponent } from './itemcard/itemcard.component'
+;
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   imports: [
@@ -20,6 +22,7 @@ import { ItemcardComponent } from './itemcard/itemcard.component'
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
+    NgbModule
   ],
   declarations: [AppComponent, CatalogComponent, LoginComponent, ItemcardComponent],
   providers: [
